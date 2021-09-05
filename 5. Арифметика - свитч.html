@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+<script>
+    let x = 7;
+    let y = 3;
+    let operation = prompt('Введите операцию: + - * /')
+    let result;
+    function arithmetic(x, y, operation, result) {
+        switch (operation) {
+            case '+':
+                return addition(x, y);
+                function addition(x, y) {
+                    return (x + y);
+                }
+                result = addition(x, y);
+                break;
+            case '-':
+                return subtraction(x, y);
+                function subtraction(x, y) {
+                    return (x - y);
+                }
+                result = subtraction(x, y);
+                break;
+            case '*':
+                return multiplication(x, y);
+                function multiplication(x, y) {
+                    return (x * y);
+                }
+                result = multiplication(x, y);
+                break;
+            case '/':
+                return division(x, y);
+                function division(x, y) {
+                    return (x / y);
+                }
+                result = division(x, y);
+                break;
+        }
+    }
+    let press = arithmetic(x, y, operation, result);
+    alert(press);
+</script>
