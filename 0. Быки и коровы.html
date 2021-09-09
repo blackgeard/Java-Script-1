@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        // !!! Поясните пожалуйста - что как работает в строке let generated = String(Math.random() * 1000000000);
+        function getRandomNumberAsArray() {
+            let generated = String(Math.random() * 1000000000); //создает случайное число и превращает его в строку для метода includes
+            let result = [];
+            for (let value of generated) {
+                if (!result.includes(value)) { // если массив result НЕ содержит число (let value из ф. generated)
+                    result.push(value) // то число value будет добавлено (push) в массив result
+                }
+                if (result.length == 4) { // если длина массива достигла 4 то
+                    return result; // вернуть result и остановиться
+                }
+            }
+        }
+
+        function startGame() {
+            let riddle = getRandomNumberAsArray();
+            while (true) {
+                let answer = prompt("Угадайте 4х значное число").split("");
+                let result = getBullsAndCowsCount(riddle, answer);
+                console.log(
+                    `Ваш ответ: ${answer}, быков: ${result.bullsCount}, коров:${result.cowsCount}\n`
+                );
+                if (riddle.toString() === answer.toString()) {
+                    console.log("Вы победили!");
+                    break;
+                }
+            }
+            console.log(`Загадка: ${riddle}`);
+        }
+
+        function getBullsAndCowsCount(riddle, answer) {
+            let bullsCount = getBullsCount(riddle, answer);
+            let cowsCount = getCowsCount(riddle, answer);
+            return {
+                "bullsCount": bullsCount,
+                "cowsCount": cowsCount - bullsCount, // вычитаем из коров быков
+            };
+        }
+
+        function getBullsCount(riddle, answer) {
+            let count = 0;
+            for (let i = 0; i < riddle.length; i++) { // цикл перебирает массив riddle в поисках совпадений с answer
+                if (riddle[i] == answer[i]) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        function getCowsCount(riddle, answer) {
+            let count = 0;
+            for (let value of riddle) {
+                if (answer.includes(value)) { // если answer включает в себя value
+                    count++
+                }
+            }
+        }
+
+
+        startGame();
+
+    </script>
+</body>
+
+</html>
