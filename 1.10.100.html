@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script>
+    let number = +prompt("Введите трехзначное число");
+    let numberInfo = {};
+    let remainderHundreds = number % 100;
+    let remainderDozens = remainderHundreds % 10;
+
+    function add(a, b, c) {
+        numberInfo[a] = Math.floor(b / c);
+    }
+
+    add('hundreds', number, с = 100);
+
+    if (numberInfo.hundreds > 10) {
+        alert('Число больше тысячи');
+    } else {
+        add('dozens', remainderHundreds, с = 10);
+        add('units', remainderDozens, с = 1);
+        alert(numberInfo.hundreds + " сотен");
+        alert(numberInfo.dozens + " десятков");
+        alert(numberInfo.units + " единиц");
+    }
+</script>
