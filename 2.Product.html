@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        function make25PercentDiscount(price) {
+            this.price = price * 0.75;
+        }
+
+        make25PercentDiscount.prototype.show = function () {
+            alert(this.price);
+        }
+
+        let product = new make25PercentDiscount(1000);
+        product.show();
+
+        /******/
+
+        class make25PercentDiscount {
+            constructor(price) {
+                this.price = price * 0.75;
+            }
+            show() {
+                alert(this.price);
+            }
+        }
+
+        let product = new make25PercentDiscount(1000);
+        product.show();
+    </script>
+</body>
+
+</html>
